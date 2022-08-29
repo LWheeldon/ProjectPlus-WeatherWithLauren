@@ -53,3 +53,10 @@ h1 {
   font-size: 50px;
   padding: 30px;
 }
+#gitHubLink {
+  color: whitesmoke;
+  display: block;
+  margin: 0 auto;
+  font-size: 40px;
+  padding: 10px;
+}
