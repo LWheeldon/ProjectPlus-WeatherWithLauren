@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherWithLauren</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://kit.fontawesome.com/031ed83db2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="documents/style.css"/> 
+</head>
+<body >
+  <header style="background-image: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/038/944/original/weather2.jpg?16564381570);">
+   <h1> <form class="location" id="cityInput">
+        <input type="search" id="citySearch" placeholder="Enter your location...">
+        <input type="submit" id="citySubmit" value="Search" /></form>
+    </h1>
+    <div class="card current-weather" style="width: 60rem;">
+    <div class="card-body">
+        <h2 class="card-title1" id="cityLive"><strong><strong></h2>
+          
+        <p class="card-text" ><strong><span id="temperature"></span>°c  </small> <span id="currentCondition"></span> </strong><br />
+          <div> Humidity: <span id="humidity"></span>% |  Wind: <span id="windSpeed"></span> km/H</div><i class="fa-solid fa-cloud-sun-rain today-weather-emoji"></i></p>
+				<br/>
+				<h3 id="dayMonth"></h3><a href="#" class="btn btn-success" id="geoLocator">Current location</a>
+                
+    
+      </div>
+    </div>
+    <div class="col days"><div class="card" style="width: 40rem;">
+      <div class="card-body">
+          <h5 class="card-title">Tomorrow</h5>
+          <p class="card-text"><i class="fa-solid fa-sun weather-emoji"></i><div>17°c <hr /> Min 10 °c | Max 18°c </div> </p>
+        </div>
+      </div></div>
+      <div class="col days"><div class="col"><div class="card" style="width: 40rem;">
+        <div class="card-body">
+            <h5 class="card-title">Wednesday</h5>
+            <p class="card-text"><i class="fa-solid fa-snowflake weather-emoji"></i><div>4°c <hr/> Min 0 °c | Max 8°c </div> </p>
+          </div>
+        </div></div></div>
+      <div class="col days"><div class="col"><div class="card" style="width: 40rem;">
+        <div class="card-body">
+            <h5 class="card-title">Thursday</h5>
+            <p class="card-text"><i class="fa-solid fa-wind weather-emoji"></i><div>17°c <hr /> Min 10 °c | Max 18°c </div> </p>
+          </div>
+        </div></div></div>
+      <div class="col days"><div class="col"><div class="card" style="width: 40rem;">
+        <div class="card-body">
+            <h5 class="card-title">Friday</h5>
+            <p class="card-text"><i class="fa-solid fa-cloud-rain weather-emoji"></i><div>17°c <hr /> Min 10 °c | Max 18°c </div></p>
+          </div>
+        </div></div></div>
+      <div class="col days"><div class="col"><div class="card" style="width: 40rem;">
+        <div class="card-body">
+            <h5 class="card-title">Saturday</h5>
+            <p class="card-text"><i class="fa-solid fa-smog weather-emoji"></i><div>17°c <hr />Min 10 °c | Max 18°c </div> </span></p>
+          </div>
+        </div></div></div>
+      
+<script src="documents/JS.js"></script>
+</body>
+</html>
