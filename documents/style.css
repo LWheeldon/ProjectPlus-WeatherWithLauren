@@ -57,10 +57,15 @@ h1 {
   font-size: 50px;
   padding: 30px;
 }
-#gitHubLink {
-  color: whitesmoke;
-  display: block;
-  margin: 0 auto;
-  font-size: 40px;
-  padding: 10px;
+#github {
+  background-color: #791a5c;
+  transition: all 0.2s ease-in-out;
+  outline: auto;
+  box-shadow: #bbe4e9;
+  padding: 10x;
+  margin-bottom: 30px;
+}
+#github:hover {
+  transform: scale(1.1);
+  padding: 12px;
 }
