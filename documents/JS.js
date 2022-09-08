@@ -19,7 +19,7 @@ function getCurrentPosition(event) {
 function displayWeatherCondition(response) {
   document.querySelector(
     "#cityLive"
-  ).innerHTML = `Current weather in ${response.data.name} is `;
+  ).innerHTML = `Weather for ${response.data.name}`;
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp
   );
@@ -29,6 +29,11 @@ function displayWeatherCondition(response) {
   );
   document.querySelector("#currentCondition").innerHTML = `  |  
     ${response.data.weather[0].description}`;
+  let weatherIcon = document.querySelector("#weatherIcon");
+  weatherIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 
 function handleSubmit(event) {
@@ -148,6 +153,6 @@ let weekDayName = [
 let day = weekDayName[now.getDay()];
 
 let dayMonth = document.querySelector("#dayMonth");
-dayMonth.innerHTML = `It is now ${day}  |  ${currentTime}:${currentMinute}`;
+dayMonth.innerHTML = `${day}  |  ${currentTime}:${currentMinute}`;
 
-search("London");
+search("Long Eaton");
