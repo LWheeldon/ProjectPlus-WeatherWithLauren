@@ -17,17 +17,16 @@ function getCurrentPosition(event) {
 }
 
 function displayWeatherCondition(response) {
+  cTemp = response.data.main.temp;
   document.querySelector(
     "#cityLive"
   ).innerHTML = `Weather for ${response.data.name}`;
-  document.querySelector("#temperature").innerHTML = Math.round(
-    response.data.main.temp
-  );
+  document.querySelector("#temperature").innerHTML = Math.round(cTemp);
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#windSpeed").innerHTML = Math.round(
     response.data.wind.speed
   );
-  document.querySelector("#currentCondition").innerHTML = `  |  
+  document.querySelector("#currentCondition").innerHTML = ` 
     ${response.data.weather[0].description}`;
   let weatherIcon = document.querySelector("#weatherIcon");
   weatherIcon.setAttribute(
@@ -40,6 +39,23 @@ function handleSubmit(event) {
   event.preventDefault();
   let city = document.querySelector("#citySearch").value;
   search(city);
+}
+
+function showFahrenheitTemp(event) {
+  event.preventDefault();
+  cLink.classList.remove("active");
+  fLink.classList.add("active");
+  let fTemp = (cTemp * 9) / 5 + 32;
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(fTemp);
+}
+
+function showCelsiusTemp(event) {
+  event.preventDefault();
+  fLink.classList.remove("active");
+  cLink.classList.add("active");
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(cTemp);
 }
 
 let geoLocator = document.querySelector("#geoLocator");
@@ -154,5 +170,12 @@ let day = weekDayName[now.getDay()];
 
 let dayMonth = document.querySelector("#dayMonth");
 dayMonth.innerHTML = `${day}  |  ${currentTime}:${currentMinute}`;
+
+let fLink = document.querySelector("#fLink");
+fLink.addEventListener("click", showFahrenheitTemp);
+let cTemp = null;
+
+let cLink = document.querySelector("#cLink");
+cLink.addEventListener("click", showCelsiusTemp);
 
 search("Long Eaton");

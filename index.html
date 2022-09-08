@@ -13,14 +13,14 @@
 <body >
   <header style="background-image: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/038/944/original/weather2.jpg?16564381570);">
    <h1> <form class="location" id="cityInput">
-        <input type="search" id="citySearch" placeholder="Enter your location...">
+        <input type="search" id="citySearch" placeholder="Enter location...">
         <input type="submit" id="citySubmit" value="Search" /></form>
     </h1>
     <div class="card current-weather" style="width: 55rem;" >
     <div class="card-body">
         <h2 class="card-title1" id="cityLive"><strong><strong></h2>
           
-        <p class="card-text" ><strong><span id="temperature"></span>°c  </small> <span id="currentCondition"></span> </strong><br />
+        <p id="currentDegree" class="card-text" ><strong><span id="temperature"></span>   <a href="#" id="cLink" class="active">°C</a> | <a href="#" id="fLink">F°</a> </small> <div id="currentCondition"></div> </strong><br />
           <div> Humidity: <span id="humidity"></span>% |  Wind: <span id="windSpeed"></span> km/H</div><img id="weatherIcon" src="http://openweathermap.org/img/wn/04d@2x.png"></img></p>
 				<br/>
 				<h3 id="dayMonth"></h3><a href="#" class="btn btn-success" id="geoLocator">Current location</a>
