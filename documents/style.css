@@ -80,3 +80,6 @@ h1 {
 .card-text .active:hover {
   text-decoration: none;
 }
+.weather-forecast-temp-min {
+  opacity: 0.7;
+}
