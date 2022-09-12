@@ -58,6 +58,26 @@ function showCelsiusTemp(event) {
   temperatureElement.innerHTML = Math.round(cTemp);
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#weatherForecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["thu", "fri", "sat", "sun", "mon"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+       <div class="col days" ><div class="card" style="width: 20rem;">
+      <div class="card-body">
+          <h6 class="card-title">${day}</h6>
+          <p class="card-text"><i class="fa-solid fa-sun weather-emoji"></i><div><span class="weather-forecast-temp-min"> Min 10 °c </span>|<span class="weather-forecast-temp-max"> Max 18°c </span> </div> </p>
+        </div>
+      </div></div>`;
+  });
+
+  weatherForecast = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 let geoLocator = document.querySelector("#geoLocator");
 geoLocator.addEventListener("click", getCurrentPosition);
 
@@ -179,3 +199,4 @@ let cLink = document.querySelector("#cLink");
 cLink.addEventListener("click", showCelsiusTemp);
 
 search("Long Eaton");
+displayForecast();
