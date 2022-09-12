@@ -33,6 +33,8 @@ function displayWeatherCondition(response) {
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+
+  getForecast(response.data.coord);
 }
 
 function handleSubmit(event) {
@@ -57,21 +59,40 @@ function showCelsiusTemp(event) {
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(cTemp);
 }
-
-function displayForecast() {
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "91e4be9d3f0ce62462b88df7804804ae";
+  let apiURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiURL).then(displayForecast);
+}
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = [`Sun`, `Mon`, `Tue`, `Wed`, `Thu`, `Fri`, `Sat`];
+  return days[day];
+}
+function displayForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#weatherForecast");
   let forecastHTML = `<div class="row">`;
-  let days = ["thu", "fri", "sat", "sun", "mon"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
        <div class="col days" ><div class="card" style="width: 20rem;">
       <div class="card-body">
-          <h6 class="card-title">${day}</h6>
-          <p class="card-text"><i class="fa-solid fa-sun weather-emoji"></i><div><span class="weather-forecast-temp-min"> Min 10 °c </span>|<span class="weather-forecast-temp-max"> Max 18°c </span> </div> </p>
+          <h6 class="card-title">${formatDay(forecastDay.dt)}</h6>
+          <p class="card-text"><img src="http://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png"></img><div><span class="weather-forecast-temp-min"> Min ${Math.round(
+          forecastDay.temp.min
+        )}°c </span>|<span class="weather-forecast-temp-max"> Max ${Math.round(
+          forecastDay.temp.max
+        )}°c </span> </div> </p>
         </div>
       </div></div>`;
+    }
   });
 
   weatherForecast = forecastHTML + `</div>`;
@@ -199,4 +220,3 @@ let cLink = document.querySelector("#cLink");
 cLink.addEventListener("click", showCelsiusTemp);
 
 search("Long Eaton");
-displayForecast();
