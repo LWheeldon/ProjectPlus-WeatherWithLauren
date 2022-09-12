@@ -72,14 +72,7 @@ h1 {
 #currentDegree {
   font-size: 30px;
 }
-.card-text .active {
-  color: #212428;
-  cursor: default;
-  text-decoration: none;
-}
-.card-text .active:hover {
-  text-decoration: none;
-}
+
 .weather-forecast-temp-min {
   opacity: 0.7;
 }

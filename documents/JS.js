@@ -43,22 +43,6 @@ function handleSubmit(event) {
   search(city);
 }
 
-function showFahrenheitTemp(event) {
-  event.preventDefault();
-  cLink.classList.remove("active");
-  fLink.classList.add("active");
-  let fTemp = (cTemp * 9) / 5 + 32;
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(fTemp);
-}
-
-function showCelsiusTemp(event) {
-  event.preventDefault();
-  fLink.classList.remove("active");
-  cLink.classList.add("active");
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = Math.round(cTemp);
-}
 function getForecast(coordinates) {
   console.log(coordinates);
   let apiKey = "91e4be9d3f0ce62462b88df7804804ae";
@@ -211,12 +195,5 @@ let day = weekDayName[now.getDay()];
 
 let dayMonth = document.querySelector("#dayMonth");
 dayMonth.innerHTML = `${day}  |  ${currentTime}:${currentMinute}`;
-
-let fLink = document.querySelector("#fLink");
-fLink.addEventListener("click", showFahrenheitTemp);
-let cTemp = null;
-
-let cLink = document.querySelector("#cLink");
-cLink.addEventListener("click", showCelsiusTemp);
 
 search("Long Eaton");
